@@ -1,10 +1,10 @@
-#Conexión de bdd
+#Conexiï¿½n de bdd
 server:
   port: 25060
 
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:strangeraccounts-do-user-12861954-0.b.db.ondigitalocean.com
+    url: jdbc:postgresql://strangeraccounts-do-user-12861954-0.b.db.ondigitalocean.com:25060/defaultdb
     username: doadmin
     password: AVNS_Tpe9Vf9nhC8cyQOA9mj
