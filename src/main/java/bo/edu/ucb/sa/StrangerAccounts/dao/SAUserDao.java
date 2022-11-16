@@ -11,7 +11,16 @@ public interface SAUserDao {
             FROM sa_users
             WHERE
                 user_id = #{user_id};
+                AND status = true
             """)
     SAUser findByPrimaryKey(Integer user_id);
 
+    @Select("""
+            SELECT pass
+            FROM sa_users
+            WHERE
+                email = #{email}
+                AND status = true
+            """)
+    public String findByUsernameAndPassword(String email);
 }

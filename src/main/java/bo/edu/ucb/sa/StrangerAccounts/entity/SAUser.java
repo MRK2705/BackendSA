@@ -4,11 +4,11 @@ import java.util.Date;
 import java.util.Objects;
 
 public class SAUser {
-    private Integer user_id;
-    private Integer group_id;
-    private String profile_picture;
-    private String first_name;
-    private String last_name;
+    private Integer userId;
+    private Integer groupId;
+    private String profilePicture;
+    private String firstName;
+    private String lastName;
     private String email;
     private String pass;
     private String phone;
@@ -20,12 +20,12 @@ public class SAUser {
     public SAUser() {
     }
 
-    public SAUser(Integer user_id,Integer group_id, String profile_picture, String first_name, String last_name, String email, String pass, String phone, Boolean status, String txUsername, String txHost, Date txDate) {
-        this.user_id = user_id;
-        this.group_id = group_id;
-        this.profile_picture = profile_picture;
-        this.first_name = first_name;
-        this.last_name = last_name;
+    public SAUser(Integer userId,Integer groupId, String profilePicture, String firstName, String lastName, String email, String pass, String phone, Boolean status, String txUsername, String txHost, Date txDate) {
+        this.userId = userId;
+        this.groupId = groupId;
+        this.profilePicture = profilePicture;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.pass = pass;
         this.phone = phone;
@@ -35,44 +35,44 @@ public class SAUser {
         this.txDate = txDate;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public Integer getGroup_id() {
-        return group_id;
+    public Integer getGroupId() {
+        return groupId;
     }
 
-    public void setGroup_id(Integer group_id) {
-        this.group_id = group_id;
+    public void setGroup_id(Integer groupId) {
+        this.groupId = groupId;
     }
 
-    public String getProfile_picture() {
-        return profile_picture;
+    public String getProfilePicture() {
+        return profilePicture;
     }
 
     public void setProfile_picture(String profile_picture) {
-        this.profile_picture = profile_picture;
+        this.profilePicture = profilePicture;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
     public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+        this.firstName = first_name;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLast_name(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -134,11 +134,11 @@ public class SAUser {
     @Override
     public String toString() {
         return "SAUser{" +
-                "user_id=" + user_id +
-                ", group_id=" + group_id +
-                ", profile_picture='" + profile_picture + '\'' +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
+                "user_id=" + userId +
+                ", group_id=" + groupId +
+                ", profile_picture='" + profilePicture + '\'' +
+                ", first_name='" + firstName + '\'' +
+                ", last_name='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", pass='" + pass + '\'' +
                 ", phone='" + phone + '\'' +
@@ -154,11 +154,11 @@ public class SAUser {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SAUser saUser = (SAUser) o;
-        return Objects.equals(user_id, saUser.user_id);
+        return Objects.equals(userId, saUser.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_id);
+        return Objects.hash(userId);
     }
 }
