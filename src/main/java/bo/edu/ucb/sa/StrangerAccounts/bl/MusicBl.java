@@ -1,25 +1,25 @@
 package bo.edu.ucb.sa.StrangerAccounts.bl;
 
 import bo.edu.ucb.sa.StrangerAccounts.dao.SAServiceDao;
+import bo.edu.ucb.sa.StrangerAccounts.dao.SAUserDao;
 import bo.edu.ucb.sa.StrangerAccounts.entity.SAServices;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class StreamingBl {
-
+public class MusicBl {
     private final SAServiceDao saServiceDao;
 
-    public StreamingBl(SAServiceDao saServiceDao) {
+    public MusicBl(SAServiceDao saServiceDao) {
         this.saServiceDao = saServiceDao;
     }
 
-    public List<SAServices> listStreamingServices(String PlatformName) {
+    public List<SAServices> listMusicServices(String PlatformName) {
 
-        if (saServiceDao.listStreamingServices(PlatformName) == null) {
+        if (saServiceDao.listMusicServices(PlatformName) == null) {
             System.out.println("No se encontró el servicio");
         }
-        return saServiceDao.listStreamingServices(PlatformName);
+        return saServiceDao.listMusicServices(PlatformName);
     }
 }

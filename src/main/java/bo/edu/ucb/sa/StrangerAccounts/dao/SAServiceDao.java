@@ -17,10 +17,14 @@ public interface SAServiceDao {
             """)
     List<SAServices> listStreamingServices(String PlatformName);
 
-//    @Select("""
-//            select string_agg(b.duration_label||b.price, ', ') AS DurationLabel
-//            from plans b JOIN service a ON
-//            ;
-//            """)
-//    List<SAServices> labelPrice(String DurationLabel);
+    @Select("""
+            select a.platform_name, a.service_type, a.picture,string_agg(b.duration_label||b.price,', ') as DurationLabel
+            from service a JOIN plans b ON
+                    a.service_id = b.service_id
+                    and a.service_type = 'Music'
+                    and a.status = true
+                    and b.status = true
+            group by a.platform_name, a.service_type,a.picture;
+            """)
+    List<SAServices> listMusicServices(String PlatformName);
 }
