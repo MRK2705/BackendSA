@@ -1,0 +1,4 @@
+###Test de gaming
+GET http://localhost:25060/api/v1/gaming/
+Content-Type: application/json
+Accept: application/json
