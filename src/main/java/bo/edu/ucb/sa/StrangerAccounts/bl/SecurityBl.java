@@ -6,9 +6,13 @@ import bo.edu.ucb.sa.StrangerAccounts.dto.AuthReqDto;
 import bo.edu.ucb.sa.StrangerAccounts.dto.AuthResDto;
 import bo.edu.ucb.sa.StrangerAccounts.dto.UserDto;
 import bo.edu.ucb.sa.StrangerAccounts.entity.SAUser;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
