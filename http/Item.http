@@ -1,0 +1,4 @@
+###Test de items
+GET http://localhost:25060/api/v1/item/
+Content-Type: application/json
+Accept: application/json
