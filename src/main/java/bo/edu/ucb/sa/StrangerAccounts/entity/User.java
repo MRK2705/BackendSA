@@ -1,9 +1,8 @@
 package bo.edu.ucb.sa.StrangerAccounts.entity;
 
 import java.util.Date;
-import java.util.Objects;
 
-public class SAUser {
+public class User {
     private Integer userId;
     private Integer groupId;
     private String profilePicture;
@@ -17,10 +16,10 @@ public class SAUser {
     private String txHost;
     private Date txDate;
 
-    public SAUser() {
+    public User() {
     }
 
-    public SAUser(Integer userId,Integer groupId, String profilePicture, String firstName, String lastName, String email, String pass, String phone, Boolean status, String txUsername, String txHost, Date txDate) {
+    public User(Integer userId,Integer groupId, String profilePicture, String firstName, String lastName, String email, String pass, String phone, Boolean status, String txUsername, String txHost, Date txDate) {
         this.userId = userId;
         this.groupId = groupId;
         this.profilePicture = profilePicture;
@@ -133,7 +132,7 @@ public class SAUser {
 
     @Override
     public String toString() {
-        return "SAUser{" +
+        return "User{" +
                 "user_id=" + userId +
                 ", group_id=" + groupId +
                 ", profile_picture='" + profilePicture + '\'' +
@@ -147,18 +146,5 @@ public class SAUser {
                 ", txHost='" + txHost + '\'' +
                 ", txDate=" + txDate +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SAUser saUser = (SAUser) o;
-        return Objects.equals(userId, saUser.userId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(userId);
     }
 }
