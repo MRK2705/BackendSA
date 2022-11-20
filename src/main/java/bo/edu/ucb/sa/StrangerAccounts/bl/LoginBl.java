@@ -56,19 +56,19 @@ public class LoginBl {
         LoginResDto result = new LoginResDto();
         //System.out.println("Comenzando proceso de autenticación con: " + credentials);
         //buscando el password por medio del username
-        String currentPasswordInBCrypt = saUserDao.findSecretByUsername(credentials.username());
+        String currentPasswordInBCrypt = saUserDao.findSecretByUsername(credentials.getUsername());
        // System.out.println("Se obtuvo la siguiente contraseña de bbdd: " + currentPasswordInBCrypt);
         // confirmando que el password sea diferente de null
         if (currentPasswordInBCrypt != null ) {
             //System.out.println("Se procede a verificar si las contraseñas coinciden");
             // Consulto si los passwords coinciden
-            BCrypt.Result bcryptResult = BCrypt.verifyer().verify(credentials.password().toCharArray(), currentPasswordInBCrypt);
+            BCrypt.Result bcryptResult = BCrypt.verifyer().verify(credentials.getPassword().toCharArray(), currentPasswordInBCrypt);
             // si ha sido correctamente verificado
             if (bcryptResult.verified) {
                 // Procedo a generar el token
                 System.out.println("Las constraseñas coinciden se genera el token");
                 // Consultamos los roles que tiene el usuario y llenamos en entity
-                List<Group> groups = groupDao.findRoleByUsername(credentials.username());
+                List<Group> groups = groupDao.findRoleByUsername(credentials.getUsername());
                 List<String> groupsAsString = new ArrayList<>();
                 for ( Group group : groups) {
                     //guardamos unicamente el nombre del grupo al que pertenece el usuario
@@ -76,7 +76,7 @@ public class LoginBl {
                 }
                 // Con esto no será necesario refrescar token.
                 // FIXME: Error de seguridad, los tokens deberían ser de corta duración.
-                result = generateTokenJwt(credentials.username(), 30000, groupsAsString);
+                result = generateTokenJwt(credentials.getUsername(), 30000, groupsAsString);
 
             } else {
                 System.out.println("Las constraseñas no coinciden");

@@ -46,7 +46,7 @@ public class SAUser {
         return groupId;
     }
 
-    public void setGroup_id(Integer groupId) {
+    public void setGroupId(Integer groupId) {
         this.groupId = groupId;
     }
 
@@ -54,7 +54,7 @@ public class SAUser {
         return profilePicture;
     }
 
-    public void setProfile_picture(String profile_picture) {
+    public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
     }
 
@@ -62,15 +62,15 @@ public class SAUser {
         return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.firstName = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLast_name(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -133,11 +133,11 @@ public class SAUser {
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + userId +
-                ", group_id=" + groupId +
-                ", profile_picture='" + profilePicture + '\'' +
-                ", first_name='" + firstName + '\'' +
-                ", last_name='" + lastName + '\'' +
+                "userId=" + userId +
+                ", groupId=" + groupId +
+                ", profilePicture='" + profilePicture + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", pass='" + pass + '\'' +
                 ", phone='" + phone + '\'' +

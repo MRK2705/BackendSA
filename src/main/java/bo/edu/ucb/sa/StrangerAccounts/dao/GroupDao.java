@@ -9,10 +9,10 @@ import java.util.List;
 public interface GroupDao {
     // encontrando el password por medio del username
     @Select("""
-            select b.gruop_name, b.description, b.status, b.tx_username, b.tx_host, b.tx_date
+            select b.group_name, b.description, b.status, b.tx_username, b.tx_host, b.tx_date
             FROM  sa_users a
                 JOIN sa_group b
-            WHERE
+            ON
                 a.email = #{username} 
                 AND a.status = true
                 AND a.group_id = b.group_id

@@ -30,7 +30,8 @@ public class LoginApi {
         } catch (Exception ex) {
             // Do nothing
         }
-        if (loginReqDto != null && loginReqDto.username() != null && loginReqDto.password() != null) {
+        System.out.println("hola");
+        if (loginReqDto != null && loginReqDto.getUsername() != null && loginReqDto.getPassword() != null) {
             // Retorna los tokens, null (porque no hay error), true porque fue exitoso
             try {
                 return new ResponseDto<>(true, null, loginBl.authenticate(loginReqDto));

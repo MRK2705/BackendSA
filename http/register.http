@@ -1,0 +1,13 @@
+### Test auth
+POST http://localhost:25060/api/v1/reapi
+Content-Type: application/json
+Accept: application/json
+
+{
+  "picture":"https://preview.redd.it/om5oz44823181.png?width=640&crop=smart&auto=webp&s=7423fa7e2ff64a4168275a8ee652667dc927abba",
+  "name": "ana",
+  "lastname": "garcia",
+  "username":"anita.garcia@gmail.com",
+  "password":"anitalavalatina",
+  "phone":"78757057"
+}

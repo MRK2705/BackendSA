@@ -1,6 +1,7 @@
 package bo.edu.ucb.sa.StrangerAccounts.dao;
 
 import bo.edu.ucb.sa.StrangerAccounts.entity.SAUser;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 public interface SAUserDao {
@@ -25,4 +26,14 @@ public interface SAUserDao {
                 AND status = true
             """)
     String findSecretByUsername(String username);
+
+    //guardando el usuario
+
+    @Insert("""
+            INSERT INTO sa_users (group_id,profile_picture,first_name,last_name,email,pass,phone,status,tx_username,tx_host,tx_date)
+            VALUES (1,#{profilePicture},#{firstName},#{lastName},#{email},#{pass},#{phone},true,'geraldine','localhost',now())
+            """)
+
+
+    void saveUser(SAUser user);
 }
