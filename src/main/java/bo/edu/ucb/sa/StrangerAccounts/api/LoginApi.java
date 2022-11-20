@@ -30,15 +30,15 @@ public class LoginApi {
         } catch (Exception ex) {
             // Do nothing
         }
-        if (LoginReqDto != null && LoginReqDto.username() != null && LoginReqDto.password() != null) {
+        if (loginReqDto != null && loginReqDto.username() != null && loginReqDto.password() != null) {
             // Retorna los tokens, null (porque no hay error), true porque fue exitoso
             try {
-                return new ResponseDto<>(true, null, LoginBl.authenticate(LoginReqDto));
+                return new ResponseDto<>(true, null, loginBl.authenticate(loginReqDto));
             } catch (StrangerAccountsException ex) {
-                return new ResponseDto<>(null, ex.getMessage(), false);
+                return new ResponseDto<>(false, ex.getMessage(), null);
             }
         } else {
-            return new ResponseDto<>(null, "Credenciales incorrectas", false);
+            return new ResponseDto<>(false, "Credenciales incorrectas", null);
         }
     }
 

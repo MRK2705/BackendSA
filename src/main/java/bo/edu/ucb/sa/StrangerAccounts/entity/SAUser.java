@@ -2,7 +2,7 @@ package bo.edu.ucb.sa.StrangerAccounts.entity;
 
 import java.util.Date;
 
-public class User {
+public class SAUser {
     private Integer userId;
     private Integer groupId;
     private String profilePicture;
@@ -16,10 +16,10 @@ public class User {
     private String txHost;
     private Date txDate;
 
-    public User() {
+    public SAUser() {
     }
 
-    public User(Integer userId,Integer groupId, String profilePicture, String firstName, String lastName, String email, String pass, String phone, Boolean status, String txUsername, String txHost, Date txDate) {
+    public SAUser(Integer userId, Integer groupId, String profilePicture, String firstName, String lastName, String email, String pass, String phone, Boolean status, String txUsername, String txHost, Date txDate) {
         this.userId = userId;
         this.groupId = groupId;
         this.profilePicture = profilePicture;

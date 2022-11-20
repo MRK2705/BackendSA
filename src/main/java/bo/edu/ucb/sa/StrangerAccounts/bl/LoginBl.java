@@ -1,7 +1,7 @@
 package bo.edu.ucb.sa.StrangerAccounts.bl;
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import bo.edu.ucb.sa.StrangerAccounts.dao.UserDao;
 import bo.edu.ucb.sa.StrangerAccounts.dao.GroupDao;
+import bo.edu.ucb.sa.StrangerAccounts.dao.SAUserDao;
 import bo.edu.ucb.sa.StrangerAccounts.dto.LoginReqDto;
 import bo.edu.ucb.sa.StrangerAccounts.dto.LoginResDto;
 import bo.edu.ucb.sa.StrangerAccounts.entity.Group;
@@ -9,19 +9,21 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import bo.edu.ucb.sa.StrangerAccounts.util.StrangerAccountsException;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class LoginBl {
     //definiendo el JSON Web Token secreto que nos ayudara a generar el token principal mas adelante
     public final static String JWT_SECRET = "LaGeraEsLaMejor1304";
-    private UserDao UserDao;
-    private GroupDao GroupDao;
-    public LoginBl(UserDao UserDao, GroupDao GroupDao) {
-        this.UserDao = UserDao;
-        this.GroupDao = GroupDao;
+    private SAUserDao saUserDao;
+    private GroupDao groupDao;
+    public LoginBl(SAUserDao saUserDao, GroupDao groupDao) {
+        this.saUserDao = saUserDao;
+        this.groupDao = groupDao;
     }
     // en esta funcion generamos el token principal
     private LoginResDto generateTokenJwt(String subject, int expirationTimeInSeconds, List<String> group) {
@@ -54,7 +56,7 @@ public class LoginBl {
         LoginResDto result = new LoginResDto();
         //System.out.println("Comenzando proceso de autenticación con: " + credentials);
         //buscando el password por medio del username
-        String currentPasswordInBCrypt = UserDao.findSecretByUsername(credentials.username());
+        String currentPasswordInBCrypt = saUserDao.findSecretByUsername(credentials.username());
        // System.out.println("Se obtuvo la siguiente contraseña de bbdd: " + currentPasswordInBCrypt);
         // confirmando que el password sea diferente de null
         if (currentPasswordInBCrypt != null ) {
@@ -66,7 +68,7 @@ public class LoginBl {
                 // Procedo a generar el token
                 System.out.println("Las constraseñas coinciden se genera el token");
                 // Consultamos los roles que tiene el usuario y llenamos en entity
-                List<Group> groups = GroupDao.findRoleByUsername(credentials.username());
+                List<Group> groups = groupDao.findRoleByUsername(credentials.username());
                 List<String> groupsAsString = new ArrayList<>();
                 for ( Group group : groups) {
                     //guardamos unicamente el nombre del grupo al que pertenece el usuario

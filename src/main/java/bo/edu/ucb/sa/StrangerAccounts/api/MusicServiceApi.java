@@ -27,10 +27,10 @@ public class MusicServiceApi {
     public ResponseEntity<ResponseDto> listMusicServices(@RequestHeader Map<String,String> headers){
         try {
             List<SAServices> platformName = musicBl.listMusicServices(headers.get("platformName"));
-            ResponseDto<List<SAServices>> responseDto = new ResponseDto<>(platformName, "Music Services", true);
+            ResponseDto<List<SAServices>> responseDto = new ResponseDto<>(true, "Music Services", platformName);
             return new ResponseEntity<>(responseDto, HttpStatus.OK);
         } catch (Exception e) {
-            ResponseDto<String> responseDto = new ResponseDto<>(null, null, false);
+            ResponseDto<String> responseDto = new ResponseDto<>(false, null, null);
             return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

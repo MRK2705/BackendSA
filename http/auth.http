@@ -1,8 +1,7 @@
-### Test auth
-GET http://localhost:25060/api/v1/auth/
+
 
 ### Test auth
-POST http://localhost:25060/api/v1/auth/
+POST http://localhost:25060/api/v1/loapi
 Content-Type: application/json
 Accept: application/json
 

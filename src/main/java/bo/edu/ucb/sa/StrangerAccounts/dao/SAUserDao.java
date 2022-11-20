@@ -1,5 +1,6 @@
 package bo.edu.ucb.sa.StrangerAccounts.dao;
 
+import bo.edu.ucb.sa.StrangerAccounts.entity.SAUser;
 import org.apache.ibatis.annotations.Select;
 
 public interface SAUserDao {
@@ -14,12 +15,14 @@ public interface SAUserDao {
             """)
     SAUser findByPrimaryKey(Integer user_id);
 
+    // encontrando el password por medio del username
     @Select("""
-            SELECT pass
-            FROM sa_users
+            select pass
+            from 
+                sa_users
             WHERE
-                email = #{email}
+                email = #{username} 
                 AND status = true
             """)
-    public String findByUsernameAndPassword(String email);
+    String findSecretByUsername(String username);
 }

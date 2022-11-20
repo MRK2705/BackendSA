@@ -1,21 +1,18 @@
 package bo.edu.ucb.sa.StrangerAccounts.dto;
 
-<<<<<<< HEAD
+
 import bo.edu.ucb.sa.StrangerAccounts.entity.SAServices;
 
-=======
->>>>>>> 0ae9e5aeecddec3d26eb9d2916f5f8d8284669e2
+
 public class ResponseDto<T> {
 
     private boolean success;
 
-<<<<<<< HEAD
-=======
     private String message;
     private T data;
 
 
->>>>>>> 0ae9e5aeecddec3d26eb9d2916f5f8d8284669e2
+
     public ResponseDto() {
     }
 

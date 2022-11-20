@@ -28,10 +28,10 @@ public class ItemServiceApi {
     public ResponseEntity<ResponseDto> listItems(@RequestHeader Map<String,String> headers){
         try {
             List<ItemDto> articleConcept = itemBl.listItems(headers.get("articleConcept"));
-            ResponseDto<List<ItemDto>> responseDto = new ResponseDto<>(articleConcept, "Items", true);
+            ResponseDto<List<ItemDto>> responseDto = new ResponseDto<>(true, "Items", articleConcept);
             return new ResponseEntity<>(responseDto, HttpStatus.OK);
         } catch (Exception e) {
-            ResponseDto<String> responseDto = new ResponseDto<>(null, null, false);
+            ResponseDto<String> responseDto = new ResponseDto<>(false, null, null);
             return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

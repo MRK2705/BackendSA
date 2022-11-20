@@ -25,10 +25,10 @@ public class StreamingServiceApi {
     public ResponseEntity<ResponseDto> listStreamingServices(@RequestHeader Map<String,String> headers){
         try {
             List<SAServices> platformName = streamingBl.listStreamingServices(headers.get("platformName"));
-            ResponseDto<List<SAServices>> responseDto = new ResponseDto<>(platformName, "Streaming Services", true);
+            ResponseDto<List<SAServices>> responseDto = new ResponseDto<>(true, "Streaming Services", platformName);
             return new ResponseEntity<>(responseDto, HttpStatus.OK);
         } catch (Exception e) {
-            ResponseDto<String> responseDto = new ResponseDto<>(null, null, false);
+            ResponseDto<String> responseDto = new ResponseDto<>(false, null, null);
             return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
