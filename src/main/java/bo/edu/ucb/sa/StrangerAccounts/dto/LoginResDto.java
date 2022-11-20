@@ -1,10 +1,10 @@
 package bo.edu.ucb.sa.StrangerAccounts.dto;
 
-public class AuthResDto{
+public class LoginResDto {
     private String token;
     private String refresh;
 
-    public AuthResDto() {
+    public LoginResDto() {
     }
 
     public String getToken() {

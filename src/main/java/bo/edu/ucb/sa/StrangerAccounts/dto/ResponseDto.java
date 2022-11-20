@@ -1,38 +1,29 @@
 package bo.edu.ucb.sa.StrangerAccounts.dto;
 
+<<<<<<< HEAD
 import bo.edu.ucb.sa.StrangerAccounts.entity.SAServices;
 
+=======
+>>>>>>> 0ae9e5aeecddec3d26eb9d2916f5f8d8284669e2
 public class ResponseDto<T> {
-    private T data;
-    private String message;
+
     private boolean success;
 
+<<<<<<< HEAD
+=======
+    private String message;
+    private T data;
+
+
+>>>>>>> 0ae9e5aeecddec3d26eb9d2916f5f8d8284669e2
     public ResponseDto() {
     }
 
-    public ResponseDto(T data, String message, boolean success) {
-        this.data = data;
-        this.message = message;
+    public ResponseDto(boolean success, String message, T data) {
         this.success = success;
-    }
-
-    public ResponseDto(SAServices streamingService, String message, Object o) {
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
         this.message = message;
+
+        this.data = data;
     }
 
     public boolean isSuccess() {
@@ -43,12 +34,32 @@ public class ResponseDto<T> {
         this.success = success;
     }
 
+
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+
+
     @Override
     public String toString() {
         return "Response{" +
-                "data=" + data +
+                "success=" + success +
                 ", message='" + message + '\'' +
-                ", success=" + success +
+                ", data=" + data +
+
                 '}';
     }
 }
