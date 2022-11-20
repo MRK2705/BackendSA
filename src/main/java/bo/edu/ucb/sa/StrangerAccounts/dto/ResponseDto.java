@@ -1,16 +1,13 @@
 package bo.edu.ucb.sa.StrangerAccounts.dto;
 
 import bo.edu.ucb.sa.StrangerAccounts.entity.SAServices;
-import org.springframework.http.HttpStatus;
-
-import java.util.List;
 
 public class ResponseDto<T> {
     private T data;
     private String message;
     private boolean success;
 
-    public ResponseDto(ResponseDto<String> responseDto, HttpStatus ok) {
+    public ResponseDto() {
     }
 
     public ResponseDto(T data, String message, boolean success) {

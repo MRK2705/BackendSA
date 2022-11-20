@@ -8,6 +8,7 @@ public class SAItem {
     private String GamePrice;
     private float Price;
     private String Picture;
+    private Boolean Status;
     private String txUsername;
     private String txHost;
     private Date txDate;
@@ -15,12 +16,13 @@ public class SAItem {
     public SAItem() {
     }
 
-    public SAItem(Integer ItemId, String ArticleConcept, String GamePrice, float Price, String Picture, String txUsername, String txHost, Date txDate) {
+    public SAItem(Integer ItemId, String ArticleConcept, String GamePrice, float Price, String Picture, Boolean status,String txUsername, String txHost, Date txDate) {
         this.ItemId = ItemId;
         this.ArticleConcept = ArticleConcept;
         this.GamePrice = GamePrice;
         this.Price = Price;
         this.Picture = Picture;
+        this.Status = status;
         this.txUsername = txUsername;
         this.txHost = txHost;
         this.txDate = txDate;
@@ -58,13 +60,13 @@ public class SAItem {
         Price = price;
     }
 
-    public String getPicture() {
-        return Picture;
-    }
+    public String getPicture() {return Picture;}
 
-    public void setPicture(String picture) {
-        Picture = picture;
-    }
+    public void setPicture(String picture) {Picture = picture;}
+
+    public Boolean getStatus() {return Status;}
+
+    public void setStatus(Boolean status) {Status = status;}
 
     public String getTxUsername() {
         return txUsername;
@@ -98,6 +100,7 @@ public class SAItem {
                 ", GamePrice='" + GamePrice + '\'' +
                 ", Price=" + Price +
                 ", Picture='" + Picture + '\'' +
+                ", Status='" + Status + '\'' +
                 ", txUsername='" + txUsername + '\'' +
                 ", txHost='" + txHost + '\'' +
                 ", txDate=" + txDate +

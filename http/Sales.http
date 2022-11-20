@@ -1,0 +1,17 @@
+###Test sales
+POST http://localhost:25060/api/v1/sales
+Content-Type: application/json
+Accept: application/json
+
+{
+  "serviceId": 1,
+  "userId": 1,
+  "itemAccountId": null,
+  "profileUsername": "profile test",
+  "durationLabel": "1 mes",
+  "startDate": "2022-11-19",
+  "expirationDate": "2022-12-19",
+  "price": 18.00,
+  "numDevices": 3,
+  "totalPrice": 18.00
+}

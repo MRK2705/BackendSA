@@ -22,4 +22,12 @@ public class StreamingBl {
         }
         return saServiceDao.listStreamingServices(PlatformName);
     }
+
+    public Integer listStreaming(Integer ServiceId) {
+
+        if (saServiceDao.listStreaming(ServiceId) == null) {
+            System.out.println("No se encontró el servicio");
+        }
+        return saServiceDao.listStreaming(ServiceId);
+    }
 }
