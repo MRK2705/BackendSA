@@ -31,6 +31,7 @@ public class RegisterBl {
         this.saUserDao.saveUser(saUser);
     }
 
+    //encontrar el usuario por email
     public SAUser findByUsername(String username) {
         return saUserDao.findByUsername(username);
     }
