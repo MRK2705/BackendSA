@@ -1,0 +1,5 @@
+### Consultamos el usuario autenticado
+GET http://localhost:25060/api/v1/reapi/
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbml0YS5nYXJjaWFAZ21haWwuY29tIiwiaXNzIjoidWNiIiwiZ3J1cG8iOlsiQ2xpZW50ZSBub3JtYWwiXSwicmVmcmVzaCI6ZmFsc2UsImV4cCI6MTY2OTAzNjg3M30.BsP8cnyDgwBCM7z0pDJGUgIP5_asSisQ3n23tcHporo

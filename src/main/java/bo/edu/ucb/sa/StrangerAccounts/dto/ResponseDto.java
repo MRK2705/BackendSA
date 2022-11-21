@@ -1,9 +1,6 @@
 package bo.edu.ucb.sa.StrangerAccounts.dto;
 
 
-import bo.edu.ucb.sa.StrangerAccounts.entity.SAServices;
-
-
 public class ResponseDto<T> {
 
     private boolean success;

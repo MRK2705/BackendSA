@@ -27,8 +27,17 @@ public interface SAUserDao {
             """)
     String findSecretByUsername(String username);
 
-    //guardando el usuario
+    @Select("""
+            select user_id, group_id, profile_picture, first_name, last_name, email, pass, phone, status, tx_username, tx_host, tx_date
+            from 
+                sa_users
+            WHERE
+                email = #{username} 
+                AND status = true
+            """)
+    public SAUser findByUsername(String username);
 
+    //guardando el usuario
     @Insert("""
             INSERT INTO sa_users (group_id,profile_picture,first_name,last_name,email,pass,phone,status,tx_username,tx_host,tx_date)
             VALUES (1,#{profilePicture},#{firstName},#{lastName},#{email},#{pass},#{phone},true,'geraldine','localhost',now())

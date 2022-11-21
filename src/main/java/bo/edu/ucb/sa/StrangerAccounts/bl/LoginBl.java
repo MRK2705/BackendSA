@@ -5,6 +5,7 @@ import bo.edu.ucb.sa.StrangerAccounts.dao.SAUserDao;
 import bo.edu.ucb.sa.StrangerAccounts.dto.LoginReqDto;
 import bo.edu.ucb.sa.StrangerAccounts.dto.LoginResDto;
 import bo.edu.ucb.sa.StrangerAccounts.entity.Group;
+import bo.edu.ucb.sa.StrangerAccounts.entity.SAUser;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
@@ -52,6 +53,11 @@ public class LoginBl {
         return result;
     }
 
+    /** * Este metodo realiza la autenticación del sistema, va a buscar al repositorio de BBDD
+     * la contraseña del usuario y la compara con su equivalente en BCRYPT
+    * @param credentials
+    * @return
+    */
     public LoginResDto authenticate(LoginReqDto credentials) {
         LoginResDto result = new LoginResDto();
         //System.out.println("Comenzando proceso de autenticación con: " + credentials);
@@ -89,7 +95,23 @@ public class LoginBl {
         return result;
     }
 
-
-
+    /** Este metodo valida un token JWT y retorna un SAUser
+     * @param token
+     * @return
+     */
+    public SAUser validateJwtToken(String jwt) {
+        System.out.printf("VAlidando token: " + jwt);
+        SAUser result = null;
+        try {
+            String username = JWT.require(Algorithm.HMAC256(JWT_SECRET))
+                    .build()
+                    .verify(jwt)
+                    .getSubject();
+            result = saUserDao.findByUsername(username);
+        } catch (Exception exception){
+            System.out.println("El usuario y cotraseña son incorrectos.");
+        }
+        return result;
+    }
 
 }

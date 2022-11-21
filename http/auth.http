@@ -1,5 +1,3 @@
-
-
 ### Test auth
 POST http://localhost:25060/api/v1/loapi
 Content-Type: application/json

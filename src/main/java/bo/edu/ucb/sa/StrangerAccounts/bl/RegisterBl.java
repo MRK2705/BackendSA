@@ -31,5 +31,8 @@ public class RegisterBl {
         this.saUserDao.saveUser(saUser);
     }
 
+    public SAUser findByUsername(String username) {
+        return saUserDao.findByUsername(username);
+    }
 
 }
