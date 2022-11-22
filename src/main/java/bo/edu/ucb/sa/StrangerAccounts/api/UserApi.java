@@ -1,6 +1,6 @@
 package bo.edu.ucb.sa.StrangerAccounts.api;
 
-import bo.edu.ucb.sa.StrangerAccounts.bl.RegisterBl;
+import bo.edu.ucb.sa.StrangerAccounts.bl.UserBl;
 import bo.edu.ucb.sa.StrangerAccounts.dto.RegisterReqDto;
 import bo.edu.ucb.sa.StrangerAccounts.dto.ResponseDto;
 import bo.edu.ucb.sa.StrangerAccounts.entity.SAUser;
@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/reapi")
-public class RegisterApi {
-    private RegisterBl registerBl;
+@RequestMapping("/api/v1/userapi")
+public class UserApi {
+    private UserBl userBl;
 
-    public RegisterApi(RegisterBl registerBl) {
-        this.registerBl = registerBl;
+    public UserApi(UserBl userBl) {
+        this.userBl = userBl;
     }
 
     @PostMapping
     public ResponseDto<String> createUser(@RequestBody RegisterReqDto registerReqDto) {
         try {
 
-            registerBl.createUser(registerReqDto);
+            userBl.createUser(registerReqDto);
             return new ResponseDto<>(true, "Usuario creado correctamente", null);
         } catch (StrangerAccountsException ex) {
             return new ResponseDto<>(false, ex.getMessage(), null);
@@ -44,7 +44,7 @@ public class RegisterApi {
         }
         try {
             String username = AuthUtil.isUserAuthenticated(AuthUtil.getTokenFromHeader(headers));
-            return new ResponseDto<>(true, null, this.registerBl.findByUsername(username));
+            return new ResponseDto<>(true, null, this.userBl.findByUsername(username));
         }
         catch (Exception ex) {
             return new ResponseDto<>(false, ex.getMessage(), null);

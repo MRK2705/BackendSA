@@ -7,10 +7,10 @@ import bo.edu.ucb.sa.StrangerAccounts.entity.SAUser;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RegisterBl {
+public class UserBl {
     private SAUserDao saUserDao;
 
-    public RegisterBl(SAUserDao saUserDao) {
+    public UserBl(SAUserDao saUserDao) {
         this.saUserDao = saUserDao;
     }
 

@@ -98,7 +98,7 @@ public class LoginBl {
     /** Este metodo valida un token JWT y retorna un SAUser
      * @param token
      * @return
-     */
+
     public SAUser validateJwtToken(String jwt) {
         System.out.printf("VAlidando token: " + jwt);
         SAUser result = null;
@@ -113,5 +113,6 @@ public class LoginBl {
         }
         return result;
     }
+    */
 
 }
