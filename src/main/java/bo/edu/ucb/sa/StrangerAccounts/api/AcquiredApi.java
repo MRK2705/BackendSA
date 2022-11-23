@@ -23,8 +23,8 @@ public class AcquiredApi {
     @GetMapping("/")
     public ResponseEntity<ResponseDto> listMethods(@RequestHeader Map<String,String> headers) {
         try{
-            List<SalesServiceAccountsDto> ServiceName = acquiredBl.lista(headers.get("ServiceName"));
-            ResponseDto<List<SalesServiceAccountsDto>> responseDto = new ResponseDto<>(true, "Metodos de pago", sName);
+            List<SalesServiceAccountsDto> ServiceName = acquiredBl.listMethodsA(headers.get("ServiceName"));
+            ResponseDto<List<SalesServiceAccountsDto>> responseDto = new ResponseDto<>(true, "Metodos de pago", ServiceName);
             return ResponseEntity.ok(responseDto);
         }catch (Exception e){
             ResponseDto<String> responseDto = new ResponseDto<>(false, null, null);

@@ -1,7 +1,7 @@
 package bo.edu.ucb.sa.StrangerAccounts.bl;
 
 import bo.edu.ucb.sa.StrangerAccounts.dao.AcquiredServiceDao;
-import bo.edu.ucb.sa.StrangerAccounts.dto.MethodDto;
+import bo.edu.ucb.sa.StrangerAccounts.dto.SalesServiceAccountsDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,7 +11,7 @@ public class AcquiredBl {
     public AcquiredBl(AcquiredServiceDao acquiredServiceDao) {
         this.acquiredServiceDao = acquiredServiceDao;
     }
-    public List<MethodDto> listMethodsA(String methodName) {
+    public List<SalesServiceAccountsDto> listMethodsA(String methodName) {
         if (acquiredServiceDao.lista(methodName) == null) {
             System.out.println("No se encontraron servicios adquiridos");
         }
