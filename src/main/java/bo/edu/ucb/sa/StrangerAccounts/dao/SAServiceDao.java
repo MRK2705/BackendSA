@@ -7,13 +7,14 @@ import java.util.List;
 
 public interface SAServiceDao {
     @Select("""
-            select a.platform_name, a.service_type, a.picture,string_agg(b.duration_label||b.price,', ') as DurationLabel
+            select a.service_id,a.platform_name, a.service_type, a.picture,string_agg(b.duration_label,'-') as DurationLabel
             from service a JOIN plans b ON
-                    a.service_id = b.service_id
+                        a.service_id = b.service_id
                     and a.service_type = 'Streaming'
                     and a.status = true
                     and b.status = true
-            group by a.platform_name, a.service_type,a.picture;
+            group by a.service_id,a.platform_name, a.service_type,a.picture
+            order by a.service_id;
             """)
     List<SAServices> listStreamingServices(String PlatformName);
 
@@ -29,24 +30,26 @@ public interface SAServiceDao {
     Integer listStreaming(Integer ServiceId);
 
     @Select("""
-            select a.platform_name, a.service_type, a.picture,string_agg(b.duration_label||b.price,', ') as DurationLabel
+            select a.service_id,a.platform_name, a.service_type, a.picture,string_agg(b.duration_label,'-') as DurationLabel
             from service a JOIN plans b ON
-                    a.service_id = b.service_id
+                        a.service_id = b.service_id
                     and a.service_type = 'Music'
                     and a.status = true
                     and b.status = true
-            group by a.platform_name, a.service_type,a.picture;
+            group by a.service_id,a.platform_name, a.service_type,a.picture
+            order by a.service_id;
             """)
     List<SAServices> listMusicServices(String PlatformName);
 
     @Select("""
-            select a.platform_name, a.service_type, a.picture,string_agg(b.duration_label||b.price,', ') as DurationLabel
+            select a.service_id,a.platform_name, a.service_type, a.picture,string_agg(b.duration_label,'-') as DurationLabel
             from service a JOIN plans b ON
-                    a.service_id = b.service_id
+                        a.service_id = b.service_id
                     and a.service_type = 'Gaming'
                     and a.status = true
                     and b.status = true
-            group by a.platform_name, a.service_type,a.picture;
+            group by a.service_id,a.platform_name, a.service_type,a.picture
+            order by a.service_id;
             """)
     List<SAServices> listGamingServices(String PlatformName);
 }

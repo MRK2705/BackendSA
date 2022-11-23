@@ -1,26 +1,28 @@
 package bo.edu.ucb.sa.StrangerAccounts.entity;
 
 public class SAServices {
+
+    private Integer ServiceId;
     private String PlatformName;
     private String Picture;
     private String ServiceType;
-
-    private Boolean Status;
-    private float Price;
     private String DurationLabel;
 
     public SAServices() {
     }
 
-    public SAServices(String platformName, String picture, String serviceType, Boolean status,float price, String durationLabel) {
+    public SAServices(Integer serviceId, String platformName, String picture, String serviceType, String durationLabel) {
+        this.ServiceId = serviceId;
         this.PlatformName = platformName;
         this.Picture = picture;
         this.ServiceType = serviceType;
-        this.Status = status;
-        this.Price = price;
         this.DurationLabel = durationLabel;
     }
 
+    public Integer getServiceId() { return ServiceId;}
+    public void setServiceId(Integer serviceId) {
+        ServiceId = serviceId;
+    }
     public String getPlatformName() { return PlatformName;}
 
     public void setPlatformName(String platformName) {
@@ -43,19 +45,13 @@ public class SAServices {
         ServiceType = serviceType;
     }
 
-    public Boolean getStatus() {
-        return Status;
-    }
+    //public float getPrice() {
+        //return Price;
+    //}
 
-    public void setStatus(Boolean status) {Status = status;}
-
-    public float getPrice() {
-        return Price;
-    }
-
-    public void setPrice(float price) {
-        Price = price;
-    }
+    //public void setPrice(float price) {
+        //Price = price;
+    //}
 
     public String getDurationLabel() {
         return DurationLabel;
@@ -68,11 +64,11 @@ public class SAServices {
     @Override
     public String toString() {
         return "SAServices{" +
+                //"ServiceId='" + ServiceId + '\'' +
                 "PlatformName='" + PlatformName + '\'' +
                 ", Picture='" + Picture + '\'' +
                 ", ServiceType='" + ServiceType + '\'' +
-                ", Status='" + Status + '\'' +
-                ", Price=" + Price +
+                //", Price=" + Price +
                 ", DurationLabel='" + DurationLabel + '\'' +
                 '}';
     }
