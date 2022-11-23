@@ -1,6 +1,7 @@
 package bo.edu.ucb.sa.StrangerAccounts.dao;
 
 import bo.edu.ucb.sa.StrangerAccounts.dto.MethodDto;
+import bo.edu.ucb.sa.StrangerAccounts.dto.SalesServiceAccountsDto;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public interface AcquiredServiceDao {
             from sales_service_accounts a
             where a.userid = #{serviceId}
              """)
-    List<MethodDto> listMethods(String methodName);
+    List<SalesServiceAccountsDto> lista(String ServiceName);
 }

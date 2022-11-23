@@ -1,0 +1,4 @@
+###Test de Servicios Adquiridos
+GET http://localhost:25060/api/v1/acquired
+Content-Type: application/json
+Accept: application/json
