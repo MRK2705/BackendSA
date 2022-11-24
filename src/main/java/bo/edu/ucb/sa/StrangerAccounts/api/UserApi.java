@@ -3,6 +3,7 @@ package bo.edu.ucb.sa.StrangerAccounts.api;
 import bo.edu.ucb.sa.StrangerAccounts.bl.UserBl;
 import bo.edu.ucb.sa.StrangerAccounts.dto.RegisterReqDto;
 import bo.edu.ucb.sa.StrangerAccounts.dto.ResponseDto;
+import bo.edu.ucb.sa.StrangerAccounts.dto.VerifyUserReqDto;
 import bo.edu.ucb.sa.StrangerAccounts.entity.SAUser;
 import bo.edu.ucb.sa.StrangerAccounts.util.AuthUtil;
 import bo.edu.ucb.sa.StrangerAccounts.util.StrangerAccountsException;
@@ -19,22 +20,39 @@ public class UserApi {
         this.userBl = userBl;
     }
 
-    @PostMapping
+    /**
+     * HACERLO ASÍ POR SIMPLICIDAD.
+     * @param registerReqDto
+     * @return
+     */
+
+    @PostMapping("/register")
     public ResponseDto<String> createUser(@RequestBody RegisterReqDto registerReqDto) {
         try {
+            Thread.sleep(3000);
+        } catch (Exception ex) {
+            // Do nothing
+        }
+        if (registerReqDto != null && registerReqDto.getPicture() != null && registerReqDto.getName() != null && registerReqDto.getLastname() != null && registerReqDto.getUsername() != null && registerReqDto.getPassword() != null && registerReqDto.getPhone() != null) {
+            try {
 
-            userBl.createUser(registerReqDto);
-            return new ResponseDto<>(true, "Usuario creado correctamente", null);
-        } catch (StrangerAccountsException ex) {
-            return new ResponseDto<>(false, ex.getMessage(), null);
+                userBl.createUser(registerReqDto);
+                return new ResponseDto<>(true, "Usuario creado correctamente", null);
+            } catch (StrangerAccountsException ex) {
+                return new ResponseDto<>(false, ex.getMessage(), null);
+            }
+        }
+        else {
+            return new ResponseDto<>(false, "Credenciales incorrectas", null);
         }
     }
-
     /**
-     * Endpoint para probar la busqueda por llave primaria
+     * HACERLO ASÍ POR SIMPLICIDAD.
      * @param userId
      * @return
      */
+
+
     @GetMapping("/")
     public ResponseDto<SAUser> getUserFromToken(@RequestHeader Map<String, String> headers) {
         try {
@@ -44,12 +62,41 @@ public class UserApi {
         }
         try {
             String username = AuthUtil.isUserAuthenticated(AuthUtil.getTokenFromHeader(headers));
-            return new ResponseDto<>(true, null, this.userBl.findByUsername(username));
+            return new ResponseDto<>(true, null, userBl.findByUsername(username));
         }
         catch (Exception ex) {
             return new ResponseDto<>(false, ex.getMessage(), null);
         }
     }
+
+    /**
+     * HACERLO ASÍ POR SIMPLICIDAD.
+     * @param verifyUserReqDto
+     * @return
+     */
+
+    @PostMapping("/verify")
+    public ResponseDto<String> verifyUser(@RequestBody VerifyUserReqDto verifyUserReqDto) {
+        try {
+            Thread.sleep(3000);
+        } catch (Exception ex) {
+            // Do nothing
+        }
+        if (verifyUserReqDto != null && verifyUserReqDto.getUsername() != null) {
+            try {
+
+                userBl.verifyUser(verifyUserReqDto);
+                return new ResponseDto<>(true, "Se encontro el usuario y se envio el codigo de verificacion", null);
+            } catch (StrangerAccountsException ex) {
+                return new ResponseDto<>(false, ex.getMessage(), null);
+            }
+        }
+        else {
+            return new ResponseDto<>(false, "Credenciales incorrectas", null);
+        }
+    }
+
+
 
 
 

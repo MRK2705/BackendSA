@@ -1,5 +1,5 @@
 ### Test auth
-POST http://localhost:25060/api/v1/reapi
+POST http://localhost:25060/api/v1/userapi/register
 Content-Type: application/json
 Accept: application/json
 

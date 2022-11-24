@@ -3,6 +3,7 @@ package bo.edu.ucb.sa.StrangerAccounts.dao;
 import bo.edu.ucb.sa.StrangerAccounts.entity.SAUser;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 public interface SAUserDao {
 
@@ -46,4 +47,6 @@ public interface SAUserDao {
 
 
     void saveUser(SAUser user);
+
+
 }

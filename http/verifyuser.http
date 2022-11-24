@@ -1,0 +1,9 @@
+POST http://localhost:25060/api/v1/userapi/verify
+Content-Type: application/json
+Accept: application/json
+
+{
+
+  "username":"geraldine.ibieta13@gmail.com"
+
+}
