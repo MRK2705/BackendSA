@@ -1,9 +1,7 @@
 package bo.edu.ucb.sa.StrangerAccounts.api;
 
 import bo.edu.ucb.sa.StrangerAccounts.bl.UserBl;
-import bo.edu.ucb.sa.StrangerAccounts.dto.RegisterReqDto;
-import bo.edu.ucb.sa.StrangerAccounts.dto.ResponseDto;
-import bo.edu.ucb.sa.StrangerAccounts.dto.VerifyUserReqDto;
+import bo.edu.ucb.sa.StrangerAccounts.dto.*;
 import bo.edu.ucb.sa.StrangerAccounts.entity.SAUser;
 import bo.edu.ucb.sa.StrangerAccounts.util.AuthUtil;
 import bo.edu.ucb.sa.StrangerAccounts.util.StrangerAccountsException;
@@ -94,6 +92,52 @@ public class UserApi {
         else {
             return new ResponseDto<>(false, "Credenciales incorrectas", null);
         }
+    }
+
+    @PostMapping("/verifycode")
+    public  ResponseDto<String> verifyCode(@RequestBody VerifyCodeReqDto verifyCodeReqDto) {
+        try {
+            Thread.sleep(3000);
+        } catch (Exception ex) {
+            // Do nothing
+        }
+        if (verifyCodeReqDto != null && verifyCodeReqDto.getCodee() != null) {
+            try {
+
+                userBl.verifyCode(verifyCodeReqDto);
+                return new ResponseDto<>(true, userBl.verifyCode(verifyCodeReqDto), null);
+            } catch (StrangerAccountsException ex) {
+                return new ResponseDto<>(false, ex.getMessage(), null);
+            }
+        }
+        else {
+            return new ResponseDto<>(false, "Credenciales incorrectas", null);
+        }
+
+
+    }
+
+    @PostMapping("/restorepass")
+    public  ResponseDto<String> restorePass(@RequestBody RestorePassReqDto restorePassReqDto) {
+        try {
+            Thread.sleep(3000);
+        } catch (Exception ex) {
+            // Do nothing
+        }
+        if (restorePassReqDto != null && restorePassReqDto.getPassword() != null) {
+            try {
+
+                userBl.restorePass(restorePassReqDto);
+                return new ResponseDto<>(true, "Se actualizo la contrasena correctamente", null);
+            } catch (StrangerAccountsException ex) {
+                return new ResponseDto<>(false, ex.getMessage(), null);
+            }
+        }
+        else {
+            return new ResponseDto<>(false, "Credenciales incorrectas", null);
+        }
+
+
     }
 
 

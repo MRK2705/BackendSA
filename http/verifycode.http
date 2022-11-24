@@ -1,0 +1,9 @@
+POST http://localhost:25060/api/v1/userapi/verifycode
+Content-Type: application/json
+Accept: application/json
+
+{
+
+  "codee":"7285"
+
+}

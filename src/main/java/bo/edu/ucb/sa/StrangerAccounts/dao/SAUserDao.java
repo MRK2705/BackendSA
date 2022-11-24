@@ -48,5 +48,11 @@ public interface SAUserDao {
 
     void saveUser(SAUser user);
 
+    @Update(
+            """
+            UPDATE sa_users set pass = #{password} where email = #{username}
+            """)
+    void updatePass(String username, String password);
+
 
 }

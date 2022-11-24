@@ -3,6 +3,8 @@ package bo.edu.ucb.sa.StrangerAccounts.bl;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import bo.edu.ucb.sa.StrangerAccounts.dao.SAUserDao;
 import bo.edu.ucb.sa.StrangerAccounts.dto.RegisterReqDto;
+import bo.edu.ucb.sa.StrangerAccounts.dto.RestorePassReqDto;
+import bo.edu.ucb.sa.StrangerAccounts.dto.VerifyCodeReqDto;
 import bo.edu.ucb.sa.StrangerAccounts.dto.VerifyUserReqDto;
 import bo.edu.ucb.sa.StrangerAccounts.entity.SAUser;
 import org.springframework.stereotype.Service;
@@ -23,7 +25,9 @@ import java.util.Properties;
 public class UserBl {
 
     private SAUserDao saUserDao;
-    private int codigo=0;
+    private int code1 = 0;
+    private String auxpass = "";
+
 
     public UserBl(SAUserDao saUserDao) {
         this.saUserDao = saUserDao;
@@ -52,15 +56,17 @@ public class UserBl {
     }
 
     public void verifyUser(VerifyUserReqDto verifyUserReqDto) {
+        auxpass = verifyUserReqDto.getUsername();
+
         if (findByUsername(verifyUserReqDto.getUsername()) != null) {
 
 
-            codigo = (int) (Math.random() * ((9999 - 1000) + 1)) + 1000;
+            code1 = (int) (Math.random() * ((9999 - 1000) + 1)) + 1000;
             String emailFrom = "strngrccnts@gmail.com";
             String passwordFrom = "kuyhefkmjpqnziba";
             String emailTo = verifyUserReqDto.getUsername();
             String subject = "Codigo de verificacion";
-            String content = "Su codigo de verificacion es: " + codigo;
+            String content = "Su codigo de verificacion es: " + code1;
             Properties mProperties = new Properties();
             Session mSession;
             MimeMessage mMessage;
@@ -95,15 +101,32 @@ public class UserBl {
             } catch (MessagingException e) {
                 throw new RuntimeException(e);
             }
-        }else {
+        } else {
             throw new RuntimeException("El usuario no existe");
         }
 
 
+    }
+
+    public String verifyCode(VerifyCodeReqDto verifyCodeReqDto) {
+        int code2 = Integer.parseInt(verifyCodeReqDto.getCodee());
+        if (code1 == code2) {
+            return ("Codigo correcto");
+        } else {
+            throw new RuntimeException("Codigo incorrecto");
+        }
+
 
     }
 
+    public void restorePass(RestorePassReqDto restorePassReqDto) {
+        String secret = BCrypt.withDefaults().hashToString(12,
+                restorePassReqDto.getPassword().toCharArray());
+        saUserDao.updatePass(auxpass, secret);
+
+
     }
+}
 
 
 
