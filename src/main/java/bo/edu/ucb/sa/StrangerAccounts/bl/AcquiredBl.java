@@ -11,10 +11,10 @@ public class AcquiredBl {
     public AcquiredBl(AcquiredServiceDao acquiredServiceDao) {
         this.acquiredServiceDao = acquiredServiceDao;
     }
-    public List<SalesServiceAccountsDto> listMethodsA(String methodName) {
-        if (acquiredServiceDao.lista(methodName) == null) {
+    public List<SalesServiceAccountsDto> listMethodsA(Integer serviceId) {
+        if (acquiredServiceDao.lista(serviceId) == null) {
             System.out.println("No se encontraron servicios adquiridos");
         }
-        return acquiredServiceDao.lista(methodName);
+        return acquiredServiceDao.lista(serviceId);
     }
 }

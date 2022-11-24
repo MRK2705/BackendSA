@@ -4,10 +4,7 @@ import bo.edu.ucb.sa.StrangerAccounts.bl.AcquiredBl;
 import bo.edu.ucb.sa.StrangerAccounts.dto.ResponseDto;
 import bo.edu.ucb.sa.StrangerAccounts.dto.SalesServiceAccountsDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -21,10 +18,10 @@ public class AcquiredApi {
         this.acquiredBl = acquiredBl;
     }
     @GetMapping("/")
-    public ResponseEntity<ResponseDto> listMethods(@RequestHeader Map<String,String> headers) {
+    public ResponseEntity<ResponseDto> listMethods(@PathVariable Integer serviceId) {
         try{
-            List<SalesServiceAccountsDto> ServiceName = acquiredBl.listMethodsA(headers.get("ServiceName"));
-            ResponseDto<List<SalesServiceAccountsDto>> responseDto = new ResponseDto<>(true, "Metodos de pago", ServiceName);
+            List<SalesServiceAccountsDto> ServiceName = acquiredBl.listMethodsA(serviceId);
+            ResponseDto<List<SalesServiceAccountsDto>> responseDto = new ResponseDto<>(true, "Servicios Adquiridos", ServiceName);
             return ResponseEntity.ok(responseDto);
         }catch (Exception e){
             ResponseDto<String> responseDto = new ResponseDto<>(false, null, null);

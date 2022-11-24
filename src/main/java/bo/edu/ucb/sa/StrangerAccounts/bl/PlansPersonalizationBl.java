@@ -17,7 +17,7 @@ public class PlansPersonalizationBl {
 
     public List<PlansPersonalizationDto> getPlansByServiceId(Integer serviceId) {
         if (plansPersonalizationDao.getPlansByServiceId(serviceId) == null) {
-            System.out.println("No se encontró el servicio");
+            System.out.println("No se encontró el plan");
         }
         return plansPersonalizationDao.getPlansByServiceId(serviceId);
     }

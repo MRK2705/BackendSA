@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface AcquiredServiceDao {
     @Select("""
-            Select a.serviceId, a.userId
+            Select a.profile_username, a.duration_label, a.start_date, a.expiration_date
             from sales_service_accounts a
-            where a.userid = #{serviceId}
+            where a.user_id = #{serviceId}
              """)
-    List<SalesServiceAccountsDto> lista(String ServiceName);
+    List<SalesServiceAccountsDto>lista(Integer serviceId);
 }
