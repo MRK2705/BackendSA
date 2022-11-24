@@ -1,24 +1,26 @@
 package bo.edu.ucb.sa.StrangerAccounts.dto;
 
 public class PlansPersonalizationDto {
-    private Integer planId;
+    private Integer plansId;
     private Integer ServiceId;
     private Integer days;
     private float price;
+    private String durationLabel;
 
     public PlansPersonalizationDto() {
     }
-    public PlansPersonalizationDto(Integer planId, Integer serviceId, Integer days, float price) {
-        this.planId = planId;
+    public PlansPersonalizationDto(Integer plansId, Integer serviceId, Integer days, float price, String durationLabel) {
+        this.plansId = plansId;
         ServiceId = serviceId;
         this.days = days;
         this.price = price;
+        this.durationLabel = durationLabel;
     }
-    public Integer getPlanId() {
-        return planId;
+    public Integer getPlansId() {
+        return plansId;
     }
-    public void setPlanId(Integer planId) {
-        this.planId = planId;
+    public void setPlansId(Integer planId) {
+        this.plansId = planId;
     }
     public Integer getServiceId() {
         return ServiceId;
@@ -38,13 +40,20 @@ public class PlansPersonalizationDto {
     public void setPrice(float price) {
         this.price = price;
     }
+    public String getDurationLabel() {
+        return durationLabel;
+    }
+    public void setDurationLabel(String durationLabel) {
+        this.durationLabel = durationLabel;
+    }
     @Override
     public String toString() {
         return "PlansDto{" +
-                "planId=" + planId +
+                "plansId=" + plansId +
                 ", ServiceId=" + ServiceId +
                 ", days=" + days +
                 ", price=" + price +
+                ", durationLabel='" + durationLabel + '\'' +
                 '}';
     }
 }

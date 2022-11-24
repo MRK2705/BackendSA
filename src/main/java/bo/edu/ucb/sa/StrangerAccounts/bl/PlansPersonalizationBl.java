@@ -15,8 +15,11 @@ public class PlansPersonalizationBl {
         this.plansPersonalizationDao = plansPersonalizationDao;
     }
 
-    public List<PlansPersonalizationDto> listPlansPersonalization(Integer serviceId) {
-        return plansPersonalizationDao.listPlansPersonalization(serviceId);
+    public List<PlansPersonalizationDto> getPlansByServiceId(Integer serviceId) {
+        if (plansPersonalizationDao.getPlansByServiceId(serviceId) == null) {
+            System.out.println("No se encontró el servicio");
+        }
+        return plansPersonalizationDao.getPlansByServiceId(serviceId);
     }
 }
 

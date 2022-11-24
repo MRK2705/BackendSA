@@ -1,7 +1,7 @@
 package bo.edu.ucb.sa.StrangerAccounts.entity;
 
 public class Plans {
-    private Integer planId;
+    private Integer plansId;
     private String planName;
     private String planDescription;
     private Integer planDuration;
@@ -15,8 +15,8 @@ public class Plans {
     public Plans() {
     }
 
-    public Plans(Integer planId, String planName, String planDescription, Integer planDuration, Integer planPrice, Integer planNumDevices, Integer planStatus, String txUsername, String txHost, String txDate) {
-        this.planId = planId;
+    public Plans(Integer plansId, String planName, String planDescription, Integer planDuration, Integer planPrice, Integer planNumDevices, Integer planStatus, String txUsername, String txHost, String txDate) {
+        this.plansId = plansId;
         this.planName = planName;
         this.planDescription = planDescription;
         this.planDuration = planDuration;
@@ -28,12 +28,12 @@ public class Plans {
         this.txDate = txDate;
     }
 
-    public Integer getPlanId() {
-        return planId;
+    public Integer getPlansId() {
+        return plansId;
     }
 
-    public void setPlanId(Integer planId) {
-        this.planId = planId;
+    public void setPlansId(Integer planId) {
+        this.plansId = planId;
     }
 
     public String getPlanName() {
@@ -110,7 +110,7 @@ public class Plans {
     @Override
     public String toString() {
         return "Plans{" +
-                "planId=" + planId +
+                "plansId=" + plansId +
                 ", planName='" + planName + '\'' +
                 ", planDescription='" + planDescription + '\'' +
                 ", planDuration=" + planDuration +

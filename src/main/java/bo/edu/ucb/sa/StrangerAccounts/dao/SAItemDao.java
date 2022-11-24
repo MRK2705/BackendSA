@@ -8,9 +8,10 @@ import java.util.List;
 
 public interface SAItemDao {
     @Select("""
-            select a.article_concept, a.game_price, a.price, a.picture
+            select a.item_id,a.article_concept, a.game_price, a.price, a.picture
             from item a where
-            a.status = true;
+            a.status = true
+            order by a.item_id;
             """)
     List<ItemDto> listItems(String articleConcept);
 }

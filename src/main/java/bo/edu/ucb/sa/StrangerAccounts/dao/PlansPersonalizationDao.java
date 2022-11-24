@@ -8,9 +8,9 @@ import java.util.List;
 //sacar los planes de un servicio
 public interface PlansPersonalizationDao {
     @Select("""
-            select plan_id
-            from plans  p
-            JOIN service s ON s.service_id=p.service_id
+            select p.service_id,p.plans_id,p.duration_label,p.days, p.price from plans  p
+                     JOIN service s ON s.service_id=p.service_id
+                     and s.service_id=#{serviceId};
             """)
-    Plans getPlansByServiceId(Integer serviceId);
+    List<PlansPersonalizationDto>getPlansByServiceId (Integer serviceId);
 }

@@ -1,0 +1,4 @@
+###Test de plans
+GET http://localhost:25060/api/v1/plans/1
+Content-Type: application/json
+Accept: application/json
