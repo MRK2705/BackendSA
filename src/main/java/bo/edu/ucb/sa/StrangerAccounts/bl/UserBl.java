@@ -9,7 +9,6 @@ import bo.edu.ucb.sa.StrangerAccounts.dto.VerifyUserReqDto;
 import bo.edu.ucb.sa.StrangerAccounts.entity.SAUser;
 import org.springframework.stereotype.Service;
 
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -17,9 +16,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
-
-
-
 
 @Service
 public class UserBl {
@@ -59,7 +55,6 @@ public class UserBl {
         auxpass = verifyUserReqDto.getUsername();
 
         if (findByUsername(verifyUserReqDto.getUsername()) != null) {
-
 
             code1 = (int) (Math.random() * ((9999 - 1000) + 1)) + 1000;
             String emailFrom = "strngrccnts@gmail.com";

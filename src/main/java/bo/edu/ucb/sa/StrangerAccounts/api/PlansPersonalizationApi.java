@@ -22,16 +22,16 @@ public class PlansPersonalizationApi {
         this.plansPersonalizationBl = plansPersonalizationBl;
     }
 
+    //obtener datos en base a llave primaria de servicio
     @GetMapping("/{serviceId}")
     public ResponseEntity<ResponseDto> getPlansByServiceId(@PathVariable Integer serviceId) {
-        try {
-            List<PlansPersonalizationDto> plans = plansPersonalizationBl.getPlansByServiceId(serviceId);
-            ResponseDto<List<PlansPersonalizationDto>> responseDto = new ResponseDto<>(true, "Plans", plans);
+        try{
+            List<PlansPersonalizationDto> plansPersonalizationDtoList = plansPersonalizationBl.getPlansByServiceId(serviceId);
+            ResponseDto<List<PlansPersonalizationDto>> responseDto = new ResponseDto<>(true, "Plans", plansPersonalizationDtoList);
             return new ResponseEntity<>(responseDto, HttpStatus.OK);
         } catch (Exception e) {
             ResponseDto<String> responseDto = new ResponseDto<>(false, null, null);
             return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 }
