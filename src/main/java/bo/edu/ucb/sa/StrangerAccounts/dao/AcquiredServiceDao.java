@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface AcquiredServiceDao {
     @Select("""
-            Select a.profile_username, a.duration_label, a.start_date, a.expiration_date
+            Select a.service_Id, a.user_Id, a.profile_username, a.duration_label, a.start_date, a.expiration_date
             from sales_service_accounts a
             where a.user_id = #{serviceId}
              """)
