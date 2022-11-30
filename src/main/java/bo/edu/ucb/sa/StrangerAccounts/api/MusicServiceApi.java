@@ -3,6 +3,7 @@ package bo.edu.ucb.sa.StrangerAccounts.api;
 import bo.edu.ucb.sa.StrangerAccounts.bl.MusicBl;
 import bo.edu.ucb.sa.StrangerAccounts.dto.ResponseDto;
 import bo.edu.ucb.sa.StrangerAccounts.entity.SAServices;
+import bo.edu.ucb.sa.StrangerAccounts.util.AuthUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,8 @@ public class MusicServiceApi {
     @GetMapping("/")
     public ResponseEntity<ResponseDto> listMusicServices(@RequestHeader Map<String,String> headers){
         try {
+            String jwt = AuthUtil.getTokenFromHeader(headers);
+            AuthUtil.verifyHasRole(jwt, "Cliente normal");
             List<SAServices> platformName = musicBl.listMusicServices(headers.get("platformName"));
             ResponseDto<List<SAServices>> responseDto = new ResponseDto<>(true, "Music Services", platformName);
             return new ResponseEntity<>(responseDto, HttpStatus.OK);

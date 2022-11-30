@@ -3,7 +3,6 @@ package bo.edu.ucb.sa.StrangerAccounts.api;
 import bo.edu.ucb.sa.StrangerAccounts.bl.ItemBl;
 import bo.edu.ucb.sa.StrangerAccounts.dto.ItemDto;
 import bo.edu.ucb.sa.StrangerAccounts.dto.ResponseDto;
-import bo.edu.ucb.sa.StrangerAccounts.entity.SAItem;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
