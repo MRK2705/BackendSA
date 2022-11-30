@@ -2,3 +2,4 @@
 GET http://localhost:25060/api/v1/streaming/
 Content-Type: application/json
 Accept: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtaXJrb2FsYXJjb242QGdtYWlsLmNvbSIsImlzcyI6InVjYiIsImdydXBvIjpbIkNsaWVudGUgbm9ybWFsIl0sInJlZnJlc2giOmZhbHNlLCJleHAiOjE2Njk3MjcwMzh9.D5kuaybkkElWxrYlP6Qj37y1CnXaK8UMnVcU-DgWK_4
