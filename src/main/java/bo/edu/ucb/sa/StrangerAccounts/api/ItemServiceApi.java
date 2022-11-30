@@ -3,6 +3,7 @@ package bo.edu.ucb.sa.StrangerAccounts.api;
 import bo.edu.ucb.sa.StrangerAccounts.bl.ItemBl;
 import bo.edu.ucb.sa.StrangerAccounts.dto.ItemDto;
 import bo.edu.ucb.sa.StrangerAccounts.dto.ResponseDto;
+import bo.edu.ucb.sa.StrangerAccounts.util.AuthUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,8 @@ public class ItemServiceApi {
     @GetMapping("/")
     public ResponseEntity<ResponseDto> listItems(@RequestHeader Map<String,String> headers){
         try {
+            String jwt = AuthUtil.getTokenFromHeader(headers);
+            AuthUtil.verifyHasRole(jwt, "Cliente normal");
             List<ItemDto> articleConcept = itemBl.listItems(headers.get("articleConcept"));
             ResponseDto<List<ItemDto>> responseDto = new ResponseDto<>(true, "Items", articleConcept);
             return new ResponseEntity<>(responseDto, HttpStatus.OK);
