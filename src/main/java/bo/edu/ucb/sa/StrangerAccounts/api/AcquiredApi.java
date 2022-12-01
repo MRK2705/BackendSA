@@ -3,6 +3,7 @@ package bo.edu.ucb.sa.StrangerAccounts.api;
 import bo.edu.ucb.sa.StrangerAccounts.bl.AcquiredBl;
 import bo.edu.ucb.sa.StrangerAccounts.dto.ResponseDto;
 import bo.edu.ucb.sa.StrangerAccounts.dto.SalesServiceAccountsDto;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,15 +18,15 @@ public class AcquiredApi {
     public AcquiredApi(AcquiredBl acquiredBl) {
         this.acquiredBl = acquiredBl;
     }
-    @GetMapping("/")
+    @GetMapping("/{serviceId}")
     public ResponseEntity<ResponseDto> listMethods(@PathVariable Integer serviceId) {
         try{
             List<SalesServiceAccountsDto> ServiceName = acquiredBl.listMethodsA(serviceId);
             ResponseDto<List<SalesServiceAccountsDto>> responseDto = new ResponseDto<>(true, "Servicios Adquiridos", ServiceName);
-            return ResponseEntity.ok(responseDto);
+            return new ResponseEntity<>(responseDto, HttpStatus.OK);
         }catch (Exception e){
             ResponseDto<String> responseDto = new ResponseDto<>(false, null, null);
-            return ResponseEntity.ok(responseDto);
+            return new ResponseEntity<>(responseDto, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

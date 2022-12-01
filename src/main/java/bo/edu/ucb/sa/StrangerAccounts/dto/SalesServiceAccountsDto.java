@@ -3,10 +3,12 @@ package bo.edu.ucb.sa.StrangerAccounts.dto;
 import java.util.Date;
 public class SalesServiceAccountsDto {
     private Integer serviceId;
+    private String platformName;
     private Integer userId;
     private Integer itemAccountId;
     private String profileUsername;
     private String durationLabel;
+    private String picture;
     private Date startDate;
     private Date expirationDate;
     private float price;
@@ -16,12 +18,14 @@ public class SalesServiceAccountsDto {
     public SalesServiceAccountsDto() {
     }
 
-    public SalesServiceAccountsDto(Integer serviceId, Integer userId, Integer itemAccountId, String profileUsername, String durationLabel, Date startDate, Date expirationDate, float price, Integer numDevices, float totalPrice) {
+    public SalesServiceAccountsDto(Integer serviceId,String platformName, Integer userId, Integer itemAccountId, String profileUsername, String durationLabel,String picture, Date startDate, Date expirationDate, float price, Integer numDevices, float totalPrice) {
         this.serviceId = serviceId;
+        this.platformName = platformName;
         this.userId = userId;
         this.itemAccountId = itemAccountId;
         this.profileUsername = profileUsername;
         this.durationLabel = durationLabel;
+        this.picture = picture;
         this.startDate = startDate;
         this.expirationDate = expirationDate;
         this.price = price;
@@ -35,6 +39,14 @@ public class SalesServiceAccountsDto {
 
     public void setServiceId(Integer serviceId) {
         this.serviceId = serviceId;
+    }
+
+    public String getPlatformName() {
+        return platformName;
+    }
+
+    public void setPlatformName(String platformName) {
+        this.platformName = platformName;
     }
 
     public Integer getUserId() {
@@ -67,6 +79,12 @@ public class SalesServiceAccountsDto {
 
     public void setDurationLabel(String durationLabel) {
         this.durationLabel = durationLabel;
+    }
+    public String getPicture() {
+        return picture;
+    }
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public Date getStartDate() {
@@ -113,10 +131,12 @@ public class SalesServiceAccountsDto {
     public String toString() {
         return "SalesServiceAccountsDto{" +
                 "serviceId=" + serviceId +
+                ", platformName='" + platformName + '\'' +
                 ", userId=" + userId +
                 ", itemAccountId=" + itemAccountId +
                 ", profileUsername='" + profileUsername + '\'' +
                 ", durationLabel='" + durationLabel + '\'' +
+                ", picture='" + picture + '\'' +
                 ", startDate=" + startDate +
                 ", expirationDate=" + expirationDate +
                 ", price=" + price +
